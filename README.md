@@ -128,7 +128,7 @@ slideNumber: true
 
 --
 
-- 2.11の[Vueインスタンスの定義]((https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.11.html))は全部使っている
+- 2.11の[Vueインスタンスの定義]((https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.11.html)は全部使っている
 
 ### Column MVVMパターン
 
