@@ -60,62 +60,16 @@ slideNumber: true
   + Fluxとは何か、なぜ今Fluxか
   + *フロントエンドのパラダイムシフトの概要を抑えられてわかりやすい。（Vueの話はない）*
 - [mozaic.fm ep13 Virtual DOM](https://mozaic.fm/episodes/13/virtual-dom.html)
-  + 上の記事踏まえたPodcast
+  + 上の記事を踏まえたPodcast
 
 ---
 
 ## 2.2 Vue.jsの導入
 
-```html
-<!DOCTYPE html>
-<html lang="ja">
-
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <script src="https://unpkg.com/vue@2.5.17"></script>
-  </head>
-
-```
-
---
-
-```html
-
-  <body>
-    <div id="app">
-        <p>
-            {{ message }}
-        </p>
-    </div>
-
-
-```
-
---
-
-```html
-
-    <script>
-        // ロードされ、Vueがグローバル変数として定義されているか確認
-        console.assert(typeof Vue !== 'undefined');
-        new Vue({
-            el: '#app',
-            data: {
-                message: 'こんにちは!'
-            }
-        });
-    </script>
-  </body>
-</html>
-```
-
----
-
-- [JSFiddle](https://jsfiddle.net/kitak/ufzsw5jL/4/)
-- JSFiddleにそのまま描いても動かない。
-- データバインディングを体感。参考: 1.2.3 リアクティブなデータバインディング
+- script要素で直接Vue.jsを読み込んで、Vue.jsのデータバインディングを体感する
+  + バインディング: JavaScriptのデータとDOM要素を結びつけること（1.2.3参照）  
+  <img src="fig/fig_2.2.png" style="width:60%;"/>
+- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.2.html), [デモ](2.2.html)
 
 --
 
@@ -129,13 +83,41 @@ slideNumber: true
 
 ## 2.3 Vueオブジェクト
 
-- グローバル変数Vue
-  + コンストラクタ
-  + モジュール
+- Vue.jsのファイルを読み込むとグローバル変数Vueが定義される
+- グローバル変数Vueは複数の役割を持ったオブジェクト
+  + Vueインスタンスを生成する**コンストラクタ**  
+    => 2.3.1で説明
+  + Vue.jsのAPIを束ねる名前空間（**モジュール**）  
+    => 2.3.2で説明
 
 --
 
 ### 2.3.1 コンストラクタ
+
+- JSではコンストラクタはオブジェクトを生成するための関数
+- 通常の関数呼び出しと異なりnew演算子を使う
+- 生成されたオブジェクトが**Vueインスタンス**
+- DOMにマウントすることでVueの機能が使える
+<img src="fig/fig_2.2.png" style="width:60%;"/>
+
+--
+
+- Vueインスタンスの生成例（2.2からの再掲）
+```js
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'こんにちは!'
+            }
+        });
+```
+
+- 「el」や「data」はコンストラクタの引数で、オプションオブジェクトという
+- オプションオブジェクトの内容によってVueインスタンスやUIの挙動が決まる
+- 本節で主要なオプションを扱う（次スライド）
+
+--
+
 |オプション名|内容|紹介箇所|
 |------|------|------|
 |data|UIの状態・データ|2.5|
@@ -143,15 +125,10 @@ slideNumber: true
 |filters|データを文字列と整形する|2.7|
 |methods|イベントが発生した時などの振る舞い|2.10|
 |computed|データから派生して算出される値|2.8|
-</span>
-
-```js
-var vm = new Vue({
-    // ...
-})
-```
 
 --
+
+- 2.11の[Vueインスタンスの定義]((https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.11.html))は全部使っている
 
 ### Column MVVMパターン
 
