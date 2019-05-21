@@ -5,7 +5,8 @@ highlightTheme: "darkula"
 slideNumber: true
 ---
 
-# 2章 Vue.jsの基本
+# 2章
+# Vue.jsの基本
 
 ---
 
@@ -17,46 +18,112 @@ slideNumber: true
 - *書籍の要約は正体、担当者の理解で書いているところは斜体で記載しています。*
 - *権利関係で問題があれば、対応するのでご指摘ください。*
 
---
-
-### *2章サマリ*
-
 ---
 
 ## 2章 Vue.jsの基本
 
 - 「文房具の購入フォーム」の作成を通して、Vue.jsの基本的な機能をマスターする。
+- Vue.jsでのUIを構成する３要素
+  + データ
+  + データを画面に表示するビュー
+  + データを変更するユーザのアクション
 
 ---
 
 ## 2.1 Vue.jsでUIを構築する際の考え方
 
-- jQueryとは違うのだよ、jQueryとは
+- jQueryのコーディングスタイルからVue.jsのコーディングスタイルへ頭を切り替える必要がある
 
 --
 
-### 2.1.1 旧来のUI構築の問題点
-
-- jQueryェ。。。
+![イベントとDOM要素の関係](fig/fig_2.1.jpeg)
 
 --
 
-### 2.1.2 Vue.jsのUI構築
+||jQuery|Vue.js|
+|---|---|---|
+|特徴|イベントリスナーが自身や他のDOM要素を操作|イベントと要素の間に「UIの状態」（state）が挟まる|
+|イベントや要素の増加による影響|イベントの要素にどのような影響を与えるか、イベントと要素の組み合わせを意識する必要がある|イベントによるUIの状態の変更、それに伴うDOMツリーやDOM要素の更新に分けて単純に考えることができる|
 
-- state
+--
+
+||jQuery|Vue.js|
+|---|---|---|
+|コーディングスタイル|**DOMツリーを中心に捉える。**DOMツリーがUIの状態を持っており、イベントによってDOMツリーをどのように変更するか考える|**UIの構築を担うJavaScriptのオブジェクト(仮想DOM)を中心に捉える。**データ、ビュー、アクションという3つの視点を切り替えながら、UIの構築を進めていく|
+
+--
+
+### 参考
+
+- [なぜ仮想DOMという概念が俺達の魂を震えさせるのか](https://qiita.com/mizchi/items/4d25bc26def1719d52e6)
+  + 仮想DOMとは何か、なぜ仮想DOMか
+  + Fluxとは何か、なぜ今Fluxか
+  + *フロントエンドのパラダイムシフトの概要を抑えられてわかりやすい。（Vueの話はない）*
+- [mozaic.fm ep13 Virtual DOM](https://mozaic.fm/episodes/13/virtual-dom.html)
+  + 上の記事踏まえたPodcast
 
 ---
 
 ## 2.2 Vue.jsの導入
 
-- [JSFiddle](https://jsfiddle.net/kitak/ufzsw5jL/)そのままだと動かない
-- JSFiddleにそのまま描いても動かない。
+```html
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <script src="https://unpkg.com/vue@2.5.17"></script>
+  </head>
+
+```
 
 --
 
-Column Vue.jsの高度な環境構築
+```html
 
-- ちゃんとやるならscriptタグに埋め込むのではなく、生成したファイルを読むこむべき
+  <body>
+    <div id="app">
+        <p>
+            {{ message }}
+        </p>
+    </div>
+
+
+```
+
+--
+
+```html
+
+    <script>
+        // ロードされ、Vueがグローバル変数として定義されているか確認
+        console.assert(typeof Vue !== 'undefined');
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'こんにちは!'
+            }
+        });
+    </script>
+  </body>
+</html>
+```
+
+---
+
+- [JSFiddle](https://jsfiddle.net/kitak/ufzsw5jL/4/)
+- JSFiddleにそのまま描いても動かない。
+- データバインディングを体感。参考: 1.2.3 リアクティブなデータバインディング
+
+--
+
+### Column Vue.jsの高度な環境構築
+
+- 本章はVue.jsの基本機能の利用のみなので、script要素でライブラリを直接読み込む簡易な開発方法を用いた。
+- SPAなど複数ファイルで構成されるアプリを開発する場合は、webpackなどのバンドルツールを利用すべき。
+- Vue CLIを用いると高度な環境を比較的簡単に構築できる。Vue CLIは6章で紹介する。
 
 ---
 
@@ -153,11 +220,18 @@ vm.items[0].quantity=2
 
 ## 2.6 テンプレート構文
 
+テンプレートでは、Vueインスタンスのデータとビュー(DOMツリー)の関係を宣言的に定義する。HTMLのテキストコンテンツへのデータの展開はMustache記法を用い、HTMLの属性を用いた独自の拡張にはディレクティブを用いる。（*例：v-bind:属性名="データを展開した属性値"*）JavaScriptの式は記法の中に１つしか書けないことに注意。
+
 ### 2.6.1 テキストへの展開
 
 --
 
 ### 2.6.2 属性値の展開
 
+--
+
+### 2.6.3 JacaScript式の展開
+
+- 計算もできる
 
 ---
