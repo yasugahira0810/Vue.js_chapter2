@@ -1,7 +1,8 @@
 ---
-theme : "Simple"
+theme : "simple"
 transition: "zoom"
 highlightTheme: "darkula"
+logoImg: "https://raw.githubusercontent.com/evilz/vscode-reveal/master/images/logo-v2.png"
 slideNumber: true
 ---
 
@@ -229,28 +230,75 @@ slideNumber: true
 - UIの状態となるデータのオブジェクトを指定
 - Vue.jsのリアクティブシステムに乗る（1.5.2参照）
 - dataにはオブジェクトか関数を渡せる。渡したオブジェクトはテンプレートから参照できる
-- [JSFiddle](https://jsfiddle.net/kitak/ufzsw5jL/4)
-- [サンプルコード](2.5.html)
+- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.5.html), [デモ](2.5.html)
+
+--
+
+### *ちょっと寄り道　JSFiddleのこと*
+
+- *書籍に載っている<https://jsfiddle.net/kitak/ufzsw5jL>にアクセスすると、何もないやんけ！という気持ちになる(土台のページとのことだけど）*
+- *いじっていて気づいたが、JSFiddleは保存すると元のURLの後に保存回数のリソースが切られるらしい*
+- *<https://jsfiddle.net/kitak/ufzsw5jL/4>にアクセスすると2.5節のサンプルが見れるので、手っ取り早く触りたい人はアクセスしてみよう*
 
 --
 
 ### 2.5.1 Vueインスタンスの確認
 
-- Vueインスタンスはブラウザの開発者ツールで確認する。Google ChromeならChrome DevTools
+- 先ほどのサンプルを使って、Vueインスタンスがどうなっているか確認する
+- Vueインスタンスはブラウザの開発者ツールで確認する
+- Google ChromeならChrome DevToolsのConsoleに「console.log(vm)」と打ち込む
+
+--
+
+<img src="fig/fig_2.5_1.png" style="width:55%;"/>
+
+<span style="font-size: 60%">*出力結果。最初は「items: (...)」みたいに閉じているけど、クリックすれば開く*</span>
 
 --
 
 
-### DevToolsを使うと2つのことがわかる
+### DevToolsでわかる2つのこと❶
 
 - $elからVueインスタンスをマウントしたDOM要素にアクセスできる
-  + $始まりのプロパティやメソッドはVue.jsが提供する
-  + デバッグに活用できる
-- dataに与えたキー名（ここではitems）がVueインスタンスの直下でプロパティとして公開されている
+<center><img src="fig/fig_2.5_2.png" style="width:70%;"/></center>
+- <span style="font-size: 60%">*左がコード、右がVueインスタンス。確かにpタグらしきものがある*</span>
+- <span style="font-size: 60%">*$始まりのプロパティやメソッドはVue.jsが提供。_始まりはVue.jsが内部利用*</span>
+
+--
+
+### DevToolsでわかる2つのこと❷
+
+- dataに与えたキー名（ここではitems）がVueインスタンスの直下でプロパティとして公開されている
+<center><img src="fig/fig_2.5_3.png" style="width:100%;"/></center>
+- <span style="font-size: 60%">*console.log(vm.items)でitemsの内容を取得できる。console.log(vm.data.items)はエラー*</span>
 
 --
 
 ### 2.5.2 データの変更を検知する
+
+- Vue.jsでは、データの変更を検知して自動で画面を更新するため、データの代入と参照は監視される
+- 先ほどの例で言えば、itemsの値を更新すると、それがトリガーとなってビューの再描画・DOM要素の更新が行われる
+- **これがVue.jsのリアクティブシステムの力だ!**(ﾄﾞﾔｧ)
+
+--
+
+### データ変更の例
+
+<center><img src="fig/fig_2.5_4.png" style="width:100%;"/></center>
+- <span style="font-size: 60%">*左が変更前、右が変更後。vm.items[0].name="万年筆"」と打ってターン！とすればDOM要素も書き換わる*</span>
+
+--
+
+### $watchによる監視
+
+- $watchメソッドは、Vueインスタンスの変更を検知してそれを元に動作する
+- $watchメソッド
+  + 第一引数：監視対象の値を返す関数
+  + 第二引数：値が変わった場合に呼ばれるコールバック関数
+
+--
+
+### サンプル使ってやってみよう
 
 ```js
 vm.$watch(function () {
@@ -259,10 +307,10 @@ vm.$watch(function () {
 }, function (quantity) {
   //このコールバックは、鉛筆の購入個数が変更されたら呼ばれます
   console.log(quantity)
+  this.items[0].name="へ〜い！鉛筆" + quantity + "本、ご注文いただきました〜。喜んで〜"
 })
 ```
-
-vm.items[0].quantity=2
+- DevToolsのConsoleにthis.items[0].quantity=100やvm.items[0].quantity=100と打ってみよう！
 
 ---
 
