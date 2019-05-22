@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            {{ items[0].name }}
+        </p>
+    </div>
+    <script>
+        // ロードされ、Vueがグローバル変数として定義されているか確認
+        console.assert(typeof Vue !== 'undefined');
+        var items = [
+            {
+                name: '鉛筆', price: 300, quantity: 0
+            }, {
+                name: 'ノート', price: 400, quantity: 0
+            }, {
+                name: '消しゴム', price: 500, quantity: 0
+            }
+        ];
+        var vm = new Vue({
+            el: '#app',
+            data: { // dataプロパティ
+                items: items
+            }
+        });
+    </script>
+</body>
+
+</html>
