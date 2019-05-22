@@ -307,7 +307,7 @@ vm.$watch(function () {
 }, function (quantity) {
   //このコールバックは、鉛筆の購入個数が変更されたら呼ばれます
   console.log(quantity)
-  this.items[0].name="へ〜い！鉛筆" + quantity + "本、ご注文いただきました〜。喜んで〜"
+  this.items[0].name="へ〜い！" + this.items[0].name + quantity + "本、ご注文いただきました〜。喜んで〜"
 })
 ```
 - DevToolsのConsoleにthis.items[0].quantity=100やvm.items[0].quantity=100と打ってみよう！
@@ -315,6 +315,27 @@ vm.$watch(function () {
 ---
 
 ## 2.6 テンプレート構文
+
+--
+
+### テンプレート？
+
+- VueインスタンスのデータからDOMを作る**手段**
+- 両者を宣言的に定義する（データバインディング）
+<center><img src="fig/fig_2.2.png" style="width:60%;"/></center>
+- <span style="font-size: 60%">*2章は右側から順に説明してきた。本節はデータからDOMを構築する手段の説明*</span>
+
+--
+
+### テンプレート構文で重要な概念
+
+- Mustachek記法によるデータの展開
+  + HTMLのテキストコンテンツへのデータ展開で用いる
+- ディレクティブによるHTML要素の拡張
+  + HTMLの属性を用いて独自の拡張を行うために用いる
+
+--
+
 
 テンプレートでは、Vueインスタンスのデータとビュー(DOMツリー)の関係を宣言的に定義する。HTMLのテキストコンテンツへのデータの展開はMustache記法を用い、HTMLの属性を用いた独自の拡張にはディレクティブを用いる。（*例：v-bind:属性名="データを展開した属性値"*）JavaScriptの式は記法の中に１つしか書けないことに注意。
 
