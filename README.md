@@ -11,21 +11,18 @@ slideNumber: true
 
 ---
 
-## *はじめに*
+## はじめに
+
+--
 
 ### *注意事項*
 
 - *このリポジトリは[[秋葉原] Vue.js入門 輪読会 2章 Vue.jsの基礎 (初心者歓迎！)](https://weeyble-js.connpass.com/event/131771/)の発表資料として用意したリポジトリです。*
-- *書籍の要約は正体、担当者の理解で書いているところは斜体で記載しています。*
-- *権利関係で問題があれば、対応するのでご指摘ください。*
+- *書籍の要約は正体、担当者の理解で書いているところは斜体で記載しています*
+- *対象は2章の前半（2.1〜2.6）のみです。2.7以降は作っていません*
+- *権利関係で問題があればご指摘ください*
 - *vscode-revealで見てもらうことを想定しています*
-
---
-
-### *おねがい*
-
-- この資料では2章の前半(2.1〜2.6)しかやりません
-- 2.7以降を誰かお願いします
+  + *Windowsは改行コードをLFにして見てください*
 
 --
 
@@ -37,7 +34,7 @@ slideNumber: true
 - 去年の輪読会で作った資料たち
   + [猫本 3章 双方向データバインティング](https://github.com/yasugahira0810/vuejs_chapter3)
   + [猫本 8章 Vuex](https://github.com/yasugahira0810/vuejs_chapter8)
-  + [Vue.js入門 Vue Router](https://github.com/yasugahira0810/Vue.js_chapter4)
+  + [Vue.js入門 4章 Vue Router](https://github.com/yasugahira0810/Vue.js_chapter4)
 
 ---
 
@@ -549,7 +546,12 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 --
 
-### *おねがい（再掲）*
+### *2章後半の注意点メモ[発表後追加]*
 
-- この資料では2章の前半(2.1〜2.6)しかやってません
-- 2.7以降を誰かお願いします
+- 2.8.1のthisの話大事
+  + methodの中のthisなにかわかるように
+  + Vueに宣言的に書くからvue.data.msgじゃない
+  + VueのthisとJSのthisと混乱しないように
+  + JSのthisで検索するといっぱい出てくるはず
+- キー書かないとバグりやすいコードを書けてしまう
+- ライフサイクル。createで動かなくてmountで動くとかある
