@@ -9,12 +9,13 @@
 </head>
 
 <body>
-    <button id="b-button" v-bind:title="loggedInButton">購入</button>
+    <button id="b-button" v-bind:title="loggedInButton" v-bind:disabled="!canBuy">購入</button>
     <script>
         var vm = new Vue({
             el: '#b-button',
             data: {
-                loggedInButton: 'ログイン済のため購入できます。'
+                loggedInButton: 'ログイン済のため購入できます。',
+                canBuy: true
             }
         });
     </script>

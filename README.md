@@ -356,13 +356,103 @@ vm.$watch(function () {
 
 ### 2.6.2 属性値の展開
 
-- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.5.html), [デモ](2.6.html)
+- これまではHTMLのテキストコンテンツへの展開の例を見てきた（鉛筆=>万年筆とか）
+- それ以外にDOM要素の属性に対しても展開できる
+- 属性の展開にMustache記法は使えないので  
+  **v-bind:属性名="データを展開した属性値"**を使う
+- v-bindは2.9でやるディレクティブの１つ
+- 以降、1つのサンプルで2つの属性の展開を示す
 
+--
+
+### 例1: title属性の展開
+
+- title属性は要素の補足情報を表す属性
+- 一般的にはマウスオーバー時にツールチップで表示
+- 例ではtitle属性にdataプロパティのloggedInButtonを与える
+- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.6.html), [デモ](2.6.html)
+
+--
+
+### 例2: disabled属性の展開
+
+- disabled属性はフォーム要素を非活性にする属性
+- &lt;button disabled&gt;購入&lt;/button&gt;と書くと<button disabled>購入</button>のように購入ボタンが非活性で表示される
+- 例のcanBuyキーは参照時に真偽値を返すデータ  
+  v-bind: disabledでは!で真偽値を反転させている
+- サンプル, デモのリンクは前ページと同じ
+
+--
+
+- 左はdisbledの真偽値が偽の場合、右は真の場合。
+<center><img src="fig/fig_2.6.png" style="width:100%;"/></center>
+- <span style="font-size: 60%">偽の場合、disabled=falseになるのではなく、disabled属性が削除される</span>
+- <span style="font-size: 60%">*真の場合のdisabled="disabled"に若干違和感を覚えるが、書籍には言及無いのでスルー*</span>
 
 --
 
 ### 2.6.3 JacaScript式の展開
 
-- 計算もできる
+- 展開はデータのバインディングだけではなくJavaScript式もサポート
+- Mustache式とv-bindの両方をサポート
+- ただしJavaScriptの式は1つしか書けない
+- 複雑なことがしたい場合は算出プロパティやメソッドを使う
+- 定期的に見直して、複雑になっていたら移動の検討をすることが大事
+- 例：
+```html
+<p>{{ items[0].price * tems[0].quantity }}</p>
+```
 
 ---
+
+## 突然のハンズオンタイム
+
+--
+
+- 2.6のサンプルコードを一緒にいじってみましょう
+- おいでませ[【ハンズオン用のJSFiddle】](https://jsfiddle.net/yasugahira0810/a687mwrz/3/)←
+<center><img src="fig/fig_handson1.png" style="width:80%;"/></center>
+<center>こんな画面が見えればOK</center>
+
+--
+
+### ハンズオン１
+
+**やること：購入ボタンを非活性にする**
+
+- 手順
+  1. DevToolsのConsoleを開く
+  2. 左上のプルダウンをtopからresult〜へ変更する
+  3. （JSを見るとVueインスタンスを変数vmに格納していることを確認する）
+  4. （data配下のキー名はvm.キー名でアクセスできることを思い出す）
+  5. Consoleに「vm.canBuy=false」と打ち込む
+  6. 購入ボタンが非活性かされることを確認する
+
+--
+
+### ハンズオン2
+
+**やること：$watchでツールチップを変更する**
+
+- 現状だと購入ボタンが非活性なのに「ログイン済のため購入できます。」のツールチップが出てしまう
+- 2.5.2でやった$watchを使ってcanBuyの真偽値を監視して、適切なツールチップを表示しよう
+
+--
+
+- 手順
+
+- Consoleに以下を打ち込む
+```js
+vm.$watch(function () {
+    return this.canBuy
+  }, function (canBuy) {
+      if(canBuy == true) {
+        this.loggedInButton="ログイン済のため購入できます。"
+      } else if (canBuy == false) {
+        this.loggedInButton="おまえに食わせる鉛筆はねぇ！"
+      }
+  })
+```
+
+- vm.canBuy=true, vm.canBuy=falseと打って、ツールチップがボタンの活性・非活性に伴って適切に変更されることを確認する
+
