@@ -291,7 +291,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 --
 
-### *ちょっと寄り道　JSFiddleのこと*
+### *ちょっと寄り道　JSFiddleのこと*
 
 - *書籍に載っている<https://jsfiddle.net/kitak/ufzsw5jL>にアクセスすると、何もないやんけ！という気持ちになる(土台のページとのことだけど）*
 - *いじっていて気づいたが、JSFiddleは保存すると元のURLの後に保存回数のリソースが切られるらしい*
@@ -309,7 +309,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 <img src="fig/fig_2.5_1.png" style="width:55%;"/>
 
-<span style="font-size: 60%">*出力結果。最初は「items: (...)」みたいに閉じているけど、クリックすれば開く*</span>
+<span style="font-size: 60%">*出力結果。最初は「items: (...)」みたいに閉じているけど、クリックすれば開く*</span>
 
 --
 
@@ -319,7 +319,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 - $elからVueインスタンスをマウントしたDOM要素にアクセスできる
 <center><img src="fig/fig_2.5_2.png" style="width:70%;"/></center>
 - <span style="font-size: 60%">*左がコード、右がVueインスタンス。確かにpタグらしきものがある*</span>
-- <span style="font-size: 60%">*$始まりのプロパティやメソッドはVue.jsが提供。_始まりはVue.jsが内部利用*</span>
+- <span style="font-size: 60%">*$始まりのプロパティやメソッドはVue.jsが提供。_始まりはVue.jsが内部利用*</span>
 
 --
 
@@ -342,7 +342,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 ### データ変更の例
 
 <center><img src="fig/fig_2.5_4.png" style="width:100%;"/></center>
-- <span style="font-size: 60%">*左が変更前、右が変更後。vm.items[0].name="万年筆"」と打ってターン！とすればDOM要素も書き換わる*</span>
+- <span style="font-size: 60%">*左が変更前、右が変更後。vm.items[0].name="万年筆"」と打ってターン！とすればDOM要素も書き換わる*</span>
 
 --
 
@@ -380,11 +380,11 @@ vm.$watch(function () {
 - VueインスタンスのデータからDOMを作る**手段**
 - 両者を宣言的に定義する（データバインディング）
 <center><img src="fig/fig_2.2.png" style="width:60%;"/></center>
-- <span style="font-size: 60%">*2章は右側から順に説明してきた。本節はデータからDOMを構築する手段の説明*</span>
+- <span style="font-size: 60%">2章は右側から順に説明してきた。本節はデータからDOMを構築する手段の説明*</span>
 
 --
 
-### テンプレート構文で重要な概念
+### テンプレート構文で重要な概念
 
 - Mustache記法によるデータの展開
   + HTMLのテキストコンテンツへのデータ展開で用いる
@@ -424,7 +424,7 @@ vm.$watch(function () {
 - title属性は要素の補足情報を表す属性
 - 一般的にはマウスオーバー時にツールチップで表示
 - 例ではtitle属性にdataプロパティのloggedInButtonを与える
-- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.6.html), [デモ](2.6.html)
+- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.6.html), [デモ](2.6.html)
 
 --
 
@@ -473,11 +473,11 @@ vm.$watch(function () {
 
 ### ハンズオン１
 
-**やること：購入ボタンを非活性にする**
+**やること: 購入ボタンを非活性にする**
 
 - 手順
   1. DevToolsのConsoleを開く
-  2. 左上のプルダウンをtopからresult〜へ変更する
+  2. 左上のプルダウンをtopからresult〜へ変更する
   3. （JSを見るとVueインスタンスを変数vmに格納していることを確認する）
   4. （data配下のキー名はvm.キー名でアクセスできることを思い出す）
   5. Consoleに「vm.canBuy=false」と打ち込む
@@ -487,7 +487,7 @@ vm.$watch(function () {
 
 ### ハンズオン2
 
-**やること：$watchでツールチップを変更する**
+**やること: $watchでツールチップを変更する**
 
 - 現状だと購入ボタンが非活性なのに「ログイン済のため購入できます。」のツールチップが出てしまう
 - 2.5.2でやった$watchを使ってcanBuyの真偽値を監視して、適切なツールチップを表示しよう
@@ -500,7 +500,7 @@ vm.$watch(function () {
 ```js
 vm.$watch(function () {
     return this.canBuy
-  }, function (canBuy) {
+  }, function (canBuy) {
       if(canBuy == true) {
         this.loggedInButton="ログイン済のため購入できます。"
       } else if (canBuy == false) {
@@ -543,4 +543,4 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 ### *おねがい（再掲）*
 
 - この資料では2章の前半(2.1〜2.6)しかやってません
-- 2.7以降を誰かお願いします
+- 2.7以降を誰かお願いします
