@@ -18,6 +18,26 @@ slideNumber: true
 - *このリポジトリは[[秋葉原] Vue.js入門 輪読会 2章 Vue.jsの基礎 (初心者歓迎！)](https://weeyble-js.connpass.com/event/131771/)の発表資料として用意したリポジトリです。*
 - *書籍の要約は正体、担当者の理解で書いているところは斜体で記載しています。*
 - *権利関係で問題があれば、対応するのでご指摘ください。*
+- *vscode-revealで見てもらうことを想定しています*
+
+--
+
+### *おねがい*
+
+- この資料では2章の前半(2.1〜2.6)しかやりません
+- 2.7以降を誰かお願いします
+
+--
+
+### 自己紹介
+
+- 安ヶ平雄太（yasugahira0810）と申します
+- SIerのアジャイル推進部隊でスクラムマスターしてます  
+  その前はインフラエンジニアだったので真面目にJSやVue.js使ってないです
+- 去年の輪読会で作った資料たち
+  + [猫本 3章 双方向データバインティング](https://github.com/yasugahira0810/vuejs_chapter3)
+  + [猫本 8章 Vuex](https://github.com/yasugahira0810/vuejs_chapter8)
+  + [Vue.js入門 Vue Router](https://github.com/yasugahira0810/Vue.js_chapter4)
 
 ---
 
@@ -25,11 +45,43 @@ slideNumber: true
 
 --
 
-- 「文房具の購入フォーム」の作成を通して、Vue.jsの基本的な機能をマスターする。
-- Vue.jsでのUIを構成する３要素
-  + データ
-  + データを画面に表示するビュー
-  + データを変更するユーザのアクション
+### 2章の概要
+
+- 「文房具の購入フォーム」の作成を通して、  
+  Vue.jsの基本的な機能をマスターする
+- Vue.jsのUIを構成する３要素, この流れで実装する
+  1. データ
+  2. データを画面に表示するビュー
+  3. データを変更するユーザのアクション
+
+  <span style="font-size: 60%">*前半やった感じ、データ, ビュー, アクションの流れよくわからなかったです*</span>
+
+--
+
+### 2章前半の概要
+
+- 2.1 Vue.jsでUIを構築する際の考え方  
+  => jQueryとは違うから注意！という抽象的な話
+- 2.2 Vue.jsの導入  
+  => script要素でVue.jsを読み込む話
+
+--
+
+### 2章前半の概要
+
+- 2.3〜2.5  
+  => Vueインスタンスとプロパティの話
+```js
+var vm = new Vue({ //2.3 Vueオブジェクト
+            el: value, //2.4 Vueインスタンスのマウント
+            data: value, //2.5 UIのデータ定義（data）
+            filters: value, 
+            methods: value,
+            computed: value
+        })
+```
+- 2.6 テンプレート構文  
+  => VueインスタンスのデータをDOMに反映する話
 
 ---
 
@@ -58,14 +110,14 @@ slideNumber: true
 
 --
 
-### 参考
+### *参考*
 
-- [なぜ仮想DOMという概念が俺達の魂を震えさせるのか](https://qiita.com/mizchi/items/4d25bc26def1719d52e6)
-  + 仮想DOMとは何か、なぜ仮想DOMか
-  + Fluxとは何か、なぜ今Fluxか
-  + *フロントエンドのパラダイムシフトの概要を抑えられてわかりやすい。（Vueの話はない）*
-- [mozaic.fm ep13 Virtual DOM](https://mozaic.fm/episodes/13/virtual-dom.html)
-  + 上の記事を踏まえたPodcast
+- [*なぜ仮想DOMという概念が俺達の魂を震えさせるのか*](https://qiita.com/mizchi/items/4d25bc26def1719d52e6)
+  + *仮想DOMとは何か、なぜ仮想DOMか*
+  + *Fluxとは何か、なぜ今Fluxか*
+  + *フロントエンドのパラダイムシフトの概要を抑えられてわかりやすい。（Vueの話はない）*
+- [*mozaic.fm ep13 Virtual DOM*](https://mozaic.fm/episodes/13/virtual-dom.html)
+  + *上の記事を踏まえたPodcast*
 
   <span style="font-size: 60%">*正直、難しくてよく分かってない。ただ分からなくてもこの後のVue.jsの基本部分を読み進める分にはそんなに問題ないと思う*</span>
 
@@ -76,7 +128,7 @@ slideNumber: true
 
 --
 
-- script要素で直接Vue.jsを読み込んで、Vue.jsのデータバインディングを体感する
+- script要素で直接Vue.jsを読み込んで、Vue.jsのデータバインディングを体感する
   + バインディング: JavaScriptのデータとDOM要素を結びつけること（1.2.3参照）  
   <img src="fig/fig_2.2.png" style="width:60%;"/>
 - [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.2.html), [デモ](2.2.html)
@@ -85,9 +137,9 @@ slideNumber: true
 
 ### Column Vue.jsの高度な環境構築
 
-- 本章はVue.jsの基本機能の利用のみなので、script要素でライブラリを直接読み込む簡易な開発方法を用いた。
-- SPAなど複数ファイルで構成されるアプリを開発する場合は、webpackなどのバンドルツールを利用すべき。
-- Vue CLIを用いると高度な環境を比較的簡単に構築できる。Vue CLIは6章で紹介する。
+- 本章はVue.jsの基本機能の利用のみなので、script要素でライブラリを直接読み込む簡易な開発方法を用いた
+- SPAなど複数ファイルで構成されるアプリを開発する際はwebpackなどのバンドルツールを利用すべき
+- Vue CLIを用いると高度な環境を比較的簡単に構築できる。Vue CLIは6章で紹介する
 
 ---
 
@@ -139,7 +191,7 @@ slideNumber: true
 |computed|データから派生した算出値　（算出プロパティ）|2.8|
 
 - <span style="font-size: 60%">*オプション名がこの後「elプロパティ」のように言い換えられるので注意*</span>
-- <span style="font-size: 60%">*JSの文法的にはオプション, Vue.jsの擁護的にはプロパティというイメージと思う*</span>
+- <span style="font-size: 60%">*JSの文法的にはオプション, Vue.jsの用語的にはプロパティというイメージと思う*</span>
 
 --
 
@@ -151,8 +203,9 @@ slideNumber: true
 
 - 本節では説明の都合上変数に代入しているが、代入せずに用いることも可能
 - 実際の開発では、複数のVueインスタンスがコミュニケーションする際に変数に代入する
-- *SNSの例はよくわからないので説明省略。気にしなくていいと思う。*
 - サンプルの変数名vmはMVVMパターンのViewModelが由来
+- <span style="font-size: 60%">*SNSの例はよくわからないので説明省略*</span>
+- <span style="font-size: 60%">*デバッグしやすいからとりあえず変数に突っ込んでおけばいいじゃん、と思うのはダメなのだろうか。。。*</span>
 
 --
 
@@ -212,7 +265,7 @@ slideNumber: true
 
 ### 2.4.2 メソッドによるマウント（$mountメソッド）
 
-- Vueインスタンス生成時にelプロパティを定義せずとも、$mountメソッドでマウントができる
+- Vueインスタンス生成時にelプロパティを定義せずとも、$mountメソッドでマウントができる
 - マウント対象のDOM要素がUI操作や通信などで遅延的に追加される場合に使う
 
 --
@@ -220,7 +273,7 @@ slideNumber: true
 ### Column Vue.jsを既存アプリケーションに導入する
 
 - 既存アプリへの導入時もDOM要素を作成してマウントするところは同じ
-- 既存アプリのテンプレートエンジンによっては、Vue.jsのシンタックスシュガー（@click, :disabled など）が使えないので、その場合は正式な書き方で記述する
+- 既存アプリのテンプレートエンジンによっては、Vue.jsのシンタックスシュガー（@click, :disabled など）が使えないので、その場合は正式な書き方で記述する
 
 ---
 
@@ -232,7 +285,8 @@ slideNumber: true
 
 - UIの状態となるデータのオブジェクトを指定
 - Vue.jsのリアクティブシステムに乗る（1.5.2参照）
-- dataにはオブジェクトか関数を渡せる。渡したオブジェクトはテンプレートから参照できる
+- dataにはオブジェクトか関数を渡せる  
+  渡したオブジェクトはテンプレートから参照できる
 - [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.5.html), [デモ](2.5.html)
 
 --
@@ -241,7 +295,7 @@ slideNumber: true
 
 - *書籍に載っている<https://jsfiddle.net/kitak/ufzsw5jL>にアクセスすると、何もないやんけ！という気持ちになる(土台のページとのことだけど）*
 - *いじっていて気づいたが、JSFiddleは保存すると元のURLの後に保存回数のリソースが切られるらしい*
-- *<https://jsfiddle.net/kitak/ufzsw5jL/4>にアクセスすると2.5節のサンプルが見れるので、手っ取り早く触りたい人はアクセスしてみよう*
+- *<https://jsfiddle.net/kitak/ufzsw5jL/4>にアクセスすると2.5節のサンプルが見れるので、手っ取り早く触りたい人はアクセスしてみよう*
 
 --
 
@@ -410,8 +464,9 @@ vm.$watch(function () {
 --
 
 - 2.6のサンプルコードを一緒にいじってみましょう
-- おいでませ[【ハンズオン用のJSFiddle】](https://jsfiddle.net/yasugahira0810/a687mwrz/3/)←
-<center><img src="fig/fig_handson1.png" style="width:80%;"/></center>
+- おいでませ[【ハンズオン用のJSFiddle】](https://jsfiddle.net/yasugahira0810/a687mwrz/3/)
+<center><img src="fig/fig_handson1.png" style="width:70%;"/></center>
+<center>https://jsfiddle.net/yasugahira0810/a687mwrz/3/</center>
 <center>こんな画面が見えればOK</center>
 
 --
@@ -454,5 +509,38 @@ vm.$watch(function () {
   })
 ```
 
-- vm.canBuy=true, vm.canBuy=falseと打って、ツールチップがボタンの活性・非活性に伴って適切に変更されることを確認する
+- vm.canBuy=true, vm.canBuy=falseと打って、ツールチップがボタンの活性・非活性に伴って適切に変更されることを確認する
 
+---
+
+### 2章前半の概要（再掲）
+
+- 2.1 Vue.jsでUIを構築する際の考え方  
+  => jQueryとは違うから注意！という抽象的な話
+- 2.2 Vue.jsの導入  
+  => script要素でVue.jsを読み込む話
+
+--
+
+### 2章前半の概要（再掲）
+
+- 2.3〜2.5  
+  => Vueインスタンスとプロパティの話
+```js
+var vm = new Vue({ //2.3 Vueオブジェクト
+            el: value, //2.4 Vueインスタンスのマウント
+            data: value, //2.5 UIのデータ定義（data）
+            filters: value, 
+            methods: value,
+            computed: value
+        })
+```
+- 2.6 テンプレート構文  
+  => VueインスタンスのデータをDOMに反映する話
+
+--
+
+### *おねがい（再掲）*
+
+- この資料では2章の前半(2.1〜2.6)しかやってません
+- 2.7以降を誰かお願いします
