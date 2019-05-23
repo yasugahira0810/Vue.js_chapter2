@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+
+<body>
+    <button id="b-button" v-bind:title="loggedInButton">購入</button>
+    <script>
+        var vm = new Vue({
+            el: '#b-button',
+            data: {
+                loggedInButton: 'ログイン済のため購入できます。'
+            }
+        });
+    </script>
+</body>
+
+</html>
