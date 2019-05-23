@@ -501,7 +501,7 @@ vm.$watch(function () {
 vm.$watch(function () {
     return this.canBuy
   }, function (canBuy) {
-      if(canBuy == true) {
+    if(canBuy == true) {
         this.loggedInButton="ログイン済のため購入できます。"
       } else if (canBuy == false) {
         this.loggedInButton="おまえに食わせる鉛筆はねぇ！"
