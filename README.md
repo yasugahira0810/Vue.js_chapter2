@@ -25,7 +25,7 @@ slideNumber: true
 ### *おねがい*
 
 - この資料では2章の前半(2.1〜2.6)しかやりません
-- 2.7以降を誰かお願いします
+- 2.7以降を誰かお願いします
 
 --
 
@@ -54,7 +54,7 @@ slideNumber: true
   2. データを画面に表示するビュー
   3. データを変更するユーザのアクション
 
-  <span style="font-size: 60%">*前半やった感じ、データ, ビュー, アクションの流れよくわからなかったです*</span>
+  <span style="font-size: 60%">*前半やった感じ、データ, ビュー, アクションの流れよくわからなかったです*</span>
 
 --
 
@@ -100,26 +100,26 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 ||jQuery|Vue.js|
 |---|---|---|
 |特徴|イベントリスナーが自身や他のDOM要素を操作|イベントと要素の間に「UIの状態」（state）が挟まる|
-|イベントや要素の増加による影響|イベントの要素にどのような影響を与えるか、イベントと要素の組み合わせを意識する必要がある|イベントによるUIの状態の変更、それに伴うDOMツリーやDOM要素の更新に分けて単純に考えることができる|
+|イベントや要素の増加による影響|イベントの要素にどのような影響を与えるか、イベントと要素の組み合わせを意識する必要がある|イベントによるUIの状態の変更、それに伴うDOMツリーやDOM要素の更新に分けて単純に考えることができる|
 
 --
 
 ||jQuery|Vue.js|
 |---|---|---|
-|コーディングスタイル|**DOMツリーを中心に捉える。**DOMツリーがUIの状態を持っており、イベントによってDOMツリーをどのように変更するか考える|**UIの構築を担うJavaScriptのオブジェクト(仮想DOM)を中心に捉える。**データ、ビュー、アクションという3つの視点を切り替えながら、UIの構築を進めていく|
+|コーディングスタイル|**DOMツリーを中心に捉える。**DOMツリーがUIの状態を持っており、イベントによってDOMツリーをどのように変更するか考える|**UIの構築を担うJavaScriptのオブジェクト(仮想DOM)を中心に捉える。**データ、ビュー、アクションという3つの視点を切り替えながら、UIの構築を進めていく|
 
 --
 
-### *参考*
+### *参考*
 
-- [*なぜ仮想DOMという概念が俺達の魂を震えさせるのか*](https://qiita.com/mizchi/items/4d25bc26def1719d52e6)
+- [*なぜ仮想DOMという概念が俺達の魂を震えさせるのか*](https://qiita.com/mizchi/items/4d25bc26def1719d52e6)
   + *仮想DOMとは何か、なぜ仮想DOMか*
   + *Fluxとは何か、なぜ今Fluxか*
   + *フロントエンドのパラダイムシフトの概要を抑えられてわかりやすい。（Vueの話はない）*
 - [*mozaic.fm ep13 Virtual DOM*](https://mozaic.fm/episodes/13/virtual-dom.html)
   + *上の記事を踏まえたPodcast*
 
-  <span style="font-size: 60%">*正直、難しくてよく分かってない。ただ分からなくてもこの後のVue.jsの基本部分を読み進める分にはそんなに問題ないと思う*</span>
+  <span style="font-size: 60%">*正直、難しくてよく分かってない。ただ分からなくてもこの後のVue.jsの基本部分を読み進める分にはそんなに問題ないと思う*</span>
 
 
 ---
@@ -150,7 +150,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 - Vue.jsのファイルを読み込むとグローバル変数Vueが定義される
 - グローバル変数Vueは複数の役割を持ったオブジェクト
   + Vueインスタンスを生成する**コンストラクタ**  
-    => 2.3.1で説明
+    => 2.3.1で説明
   + Vue.jsのAPIを束ねる名前空間（**モジュール**）  
     => 2.3.2で説明
 
@@ -177,7 +177,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 ```
 
 - 「el」や「data」はコンストラクタの引数で、オプションオブジェクトという
-- オプションオブジェクトの内容によってVueインスタンスやUIの挙動が決まる
+- オプションオブジェクトの内容によってVueインスタンスやUIの挙動が決まる
 - 本節で主要なオプションを扱う（次スライド）
 
 --
@@ -190,12 +190,12 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 |methods|イベント発生時などの振舞い|2.10|
 |computed|データから派生した算出値　（算出プロパティ）|2.8|
 
-- <span style="font-size: 60%">*オプション名がこの後「elプロパティ」のように言い換えられるので注意*</span>
-- <span style="font-size: 60%">*JSの文法的にはオプション, Vue.jsの用語的にはプロパティというイメージと思う*</span>
+- <span style="font-size: 60%">*オプション名がこの後「elプロパティ」のように言い換えられるので注意*</span>
+- <span style="font-size: 60%">*JSの文法的にはオプション, Vue.jsの用語的にはプロパティというイメージと思う*</span>
 
 --
 
-- *[2.11のVueインスタンスの定義](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.11.html)は全部使ってるので覗いてみよう！*
+- *[2.11のVueインスタンスの定義](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.11.html)は全部使ってるので覗いてみよう！*
 
 --
 
@@ -203,9 +203,9 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 - 本節では説明の都合上変数に代入しているが、代入せずに用いることも可能
 - 実際の開発では、複数のVueインスタンスがコミュニケーションする際に変数に代入する
-- サンプルの変数名vmはMVVMパターンのViewModelが由来
-- <span style="font-size: 60%">*SNSの例はよくわからないので説明省略*</span>
-- <span style="font-size: 60%">*デバッグしやすいからとりあえず変数に突っ込んでおけばいいじゃん、と思うのはダメなのだろうか。。。*</span>
+- サンプルの変数名vmはMVVMパターンのViewModelが由来
+- <span style="font-size: 60%">*SNSの例はよくわからないので説明省略*</span>
+- <span style="font-size: 60%">*デバッグしやすいからとりあえず変数に突っ込んでおけばいいじゃん、と思うのはダメなのだろうか。。。*</span>
 
 --
 
@@ -272,7 +272,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 ### Column Vue.jsを既存アプリケーションに導入する
 
-- 既存アプリへの導入時もDOM要素を作成してマウントするところは同じ
+- 既存アプリへの導入時もDOM要素を作成してマウントするところは同じ
 - 既存アプリのテンプレートエンジンによっては、Vue.jsのシンタックスシュガー（@click, :disabled など）が使えないので、その場合は正式な書き方で記述する
 
 ---
@@ -287,11 +287,11 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 - Vue.jsのリアクティブシステムに乗る（1.5.2参照）
 - dataにはオブジェクトか関数を渡せる  
   渡したオブジェクトはテンプレートから参照できる
-- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.5.html), [デモ](2.5.html)
+- [サンプルコード](https://github.com/yasugahira0810/Vue.js_chapter2/blob/master/2.5.html), [デモ](2.5.html)
 
 --
 
-### *ちょっと寄り道　JSFiddleのこと*
+### *ちょっと寄り道　JSFiddleのこと*
 
 - *書籍に載っている<https://jsfiddle.net/kitak/ufzsw5jL>にアクセスすると、何もないやんけ！という気持ちになる(土台のページとのことだけど）*
 - *いじっていて気づいたが、JSFiddleは保存すると元のURLの後に保存回数のリソースが切られるらしい*
@@ -318,7 +318,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 - $elからVueインスタンスをマウントしたDOM要素にアクセスできる
 <center><img src="fig/fig_2.5_2.png" style="width:70%;"/></center>
-- <span style="font-size: 60%">*左がコード、右がVueインスタンス。確かにpタグらしきものがある*</span>
+- <span style="font-size: 60%">*左がコード、右がVueインスタンス。確かにpタグらしきものがある*</span>
 - <span style="font-size: 60%">*$始まりのプロパティやメソッドはVue.jsが提供。_始まりはVue.jsが内部利用*</span>
 
 --
@@ -327,7 +327,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 - dataに与えたキー名（ここではitems）がVueインスタンスの直下でプロパティとして公開されている
 <center><img src="fig/fig_2.5_3.png" style="width:100%;"/></center>
-- <span style="font-size: 60%">*console.log(vm.items)でitemsの内容を取得できる。console.log(vm.data.items)はエラー*</span>
+- <span style="font-size: 60%">*console.log(vm.items)でitemsの内容を取得できる。console.log(vm.data.items)はエラー*</span>
 
 --
 
@@ -355,7 +355,7 @@ var vm = new Vue({ //2.3 Vueオブジェクト
 
 --
 
-### サンプル使ってやってみよう
+### サンプル使ってやってみよう
 
 ```js
 vm.$watch(function () {
@@ -367,7 +367,7 @@ vm.$watch(function () {
   this.items[0].name="へ〜い！" + this.items[0].name + quantity + "本、ご注文いただきました〜。喜んで〜"
 })
 ```
-- DevToolsのConsoleにthis.items[0].quantity=100やvm.items[0].quantity=100と打ってみよう！
+- DevToolsのConsoleにvm.items[0].quantity=100と打ってみよう！
 
 ---
 
